@@ -26,11 +26,7 @@ module.exports = {
     // Using Vanilla JS:
     global_page: ["./src/main/js/global_page/index.js"],
 
-    // Using Backbone JS:
-    project_page: ["./src/main/js/project_page/index.js"],
-
     // Using React:
-    portfolio_page: ["./src/main/js/portfolio_page/index.js"],
     admin_page: ["./src/main/js/admin_page/index.js"]
   },
   output: {

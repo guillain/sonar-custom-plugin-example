@@ -22,6 +22,7 @@ function init() {
   el.innerHTML = `
 <div class="page page-limited example-global_page">
   <button class="button button-red" id="example-global_page--button">Do not click me</button>
+  <p>I'm just there for a demo, let me know what you want to display :)</p>
 </div>
 `;
   document
