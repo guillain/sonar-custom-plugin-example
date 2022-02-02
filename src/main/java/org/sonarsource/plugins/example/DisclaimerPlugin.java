@@ -1,7 +1,7 @@
 /*
  * Example Plugin for SonarQube
  * Copyright (C) 2009-2020 SonarSource SA
- * mailto:info AT sonarsource DOT com
+ * mailto:contact AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,27 +17,29 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonarsource.plugins.example.web;
+package org.sonarsource.plugins.example;
 
-import org.sonar.api.web.page.Context;
-import org.sonar.api.web.page.Page;
-import org.sonar.api.web.page.PageDefinition;
+import org.sonar.api.Plugin;
+import org.sonar.api.config.PropertyDefinition;
+import org.sonarsource.plugins.example.settings.DisclaimerProperties;
+import org.sonarsource.plugins.example.settings.DisclaimerScanner;
+import org.sonarsource.plugins.example.web.DisclaimerPageDefinition;
 
-import static org.sonar.api.web.page.Page.Qualifier.SUB_VIEW;
-import static org.sonar.api.web.page.Page.Qualifier.VIEW;
-import static org.sonar.api.web.page.Page.Scope.COMPONENT;
+import static java.util.Arrays.asList;
 
-public class MyPluginPageDefinition implements PageDefinition {
+/**
+ * This class is the entry point for all extensions. It is referenced in pom.xml.
+ */
+public class DisclaimerPlugin implements Plugin {
 
   @Override
   public void define(Context context) {
+    // tutorial on settings
     context
-      .addPage(Page.builder("example/global_page")
-        .setName("Global Page using Vanilla JS")
-        .build())
-      .addPage(Page.builder("example/admin_page")
-        .setName("Admin Page using React JS")
-        .setAdmin(true)
-        .build());
+      .addExtensions(DisclaimerProperties.getProperties())
+      .addExtension(DisclaimerScanner.class);
+
+    // tutorial on web extensions
+    context.addExtension(DisclaimerPageDefinition.class);
   }
 }

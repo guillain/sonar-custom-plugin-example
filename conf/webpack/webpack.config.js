@@ -24,10 +24,7 @@ module.exports = {
   // defined in src/main/java/org/sonarsource/plugins/example/web/MyPluginPageDefinition.java
   entry: {
     // Using Vanilla JS:
-    global_page: ["./src/main/js/global_page/index.js"],
-
-    // Using React:
-    admin_page: ["./src/main/js/admin_page/index.js"]
+    global_page: ["./src/main/js/global_page/index.js"]
   },
   output: {
     // The entry point files MUST be shipped inside the final JAR's static/
@@ -37,16 +34,6 @@ module.exports = {
   },
   resolve: {
     root: path.join(__dirname, "src/main/js")
-  },
-  externals: {
-    // React 16.8 ships with SonarQube, and should be re-used to avoid 
-    // collisions at runtime.
-    react: "React",
-    "react-dom": "ReactDOM",
-    // Register the Sonar* globals as packages, to simplify importing.
-    // See src/main/js/common/api.js for more information on what is exposed 
-    // in SonarRequest.
-    "sonar-request": "SonarRequest",
   },
   module: {
     // Our example uses Babel to transpile our code.

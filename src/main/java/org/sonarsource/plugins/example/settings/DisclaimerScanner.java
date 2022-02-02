@@ -19,28 +19,26 @@
  */
 package org.sonarsource.plugins.example.settings;
 
-import java.util.List;
-import org.sonar.api.config.PropertyDefinition;
+import org.sonar.api.batch.sensor.Sensor;
+import org.sonar.api.batch.sensor.SensorContext;
+import org.sonar.api.batch.sensor.SensorDescriptor;
+import org.sonar.api.utils.log.Loggers;
 
-import static java.util.Arrays.asList;
+public class DisclaimerScanner implements Sensor {
 
-public class HelloWorldProperties {
-
-  public static final String HELLO_KEY = "sonar.example.hello";
-  public static final String CATEGORY = "Properties Example";
-
-  private HelloWorldProperties() {
-    // only statics
+  @Override
+  public void describe(SensorDescriptor descriptor) {
+    descriptor.name(getClass().getName());
   }
 
-  public static List<PropertyDefinition> getProperties() {
-    return asList(
-      PropertyDefinition.builder(HELLO_KEY)
-        .name("Hello")
-        .description("Say Hello")
-        .defaultValue(String.valueOf(false))
-        .category(CATEGORY)
-        .build());
+  @Override
+  public void execute(SensorContext context) {
+    if (context.config().getBoolean(DisclaimerProperties.DISCLAIMER_SCANNER_KEY).orElse(false)) {
+      Loggers.get(getClass()).info("----------------- Airbus - Sonarqube Disclaimer -----------------");
+      Loggers.get(getClass()).info("   General Data Protection Regulations / Export Control / Occar  ");
+      Loggers.get(getClass()).info("             https://confluence.airbus.corp/x/QoypDQ             ");
+      Loggers.get(getClass()).info("-----------------------------------------------------------------");
+    }
   }
 
 }

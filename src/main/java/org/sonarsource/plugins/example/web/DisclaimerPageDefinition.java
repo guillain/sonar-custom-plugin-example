@@ -1,4 +1,5 @@
 /*
+ * Example Plugin for SonarQube
  * Copyright (C) 2009-2020 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
@@ -16,15 +17,23 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-import React from 'react';
-import '../style.css';
-import InstanceStatisticsApp from './components/InstanceStatisticsApp';
+package org.sonarsource.plugins.example.web;
 
-// This creates a global administration page, which generates a report of the
-// overall number of Quality Profiles, Quality Gates, total number of issues,
-// and total number of projects.
-//
-// You can access it at /admin/extension/example/admin_page
-window.registerExtension('example/admin_page', () => {
-  return <InstanceStatisticsApp />
-});
+import org.sonar.api.web.page.Context;
+import org.sonar.api.web.page.Page;
+import org.sonar.api.web.page.PageDefinition;
+
+import static org.sonar.api.web.page.Page.Qualifier.SUB_VIEW;
+import static org.sonar.api.web.page.Page.Qualifier.VIEW;
+import static org.sonar.api.web.page.Page.Scope.COMPONENT;
+
+public class DisclaimerPageDefinition implements PageDefinition {
+
+  @Override
+  public void define(Context context) {
+    context
+      .addPage(Page.builder("example/global_page")
+        .setName("Disclaimer")
+        .build());
+  }
+}
