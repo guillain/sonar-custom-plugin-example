@@ -34,10 +34,7 @@ public class DisclaimerScanner implements Sensor {
   @Override
   public void execute(SensorContext context) {
     if (context.config().getBoolean(DisclaimerProperties.DISCLAIMER_SCANNER_KEY).orElse(false)) {
-      Loggers.get(getClass()).info("----------------- Airbus - Sonarqube Disclaimer -----------------");
-      Loggers.get(getClass()).info("   General Data Protection Regulations / Export Control / Occar  ");
-      Loggers.get(getClass()).info("             https://confluence.airbus.corp/x/QoypDQ             ");
-      Loggers.get(getClass()).info("-----------------------------------------------------------------");
+      Loggers.get(getClass()).info(DisclaimerProperties.DISCLAIMER_SCANNER_CONTENT_KEY);
     }
   }
 

@@ -27,9 +27,12 @@ import static java.util.Arrays.asList;
 public class DisclaimerProperties {
 
   public static final String CATEGORY = "Disclaimer";
-  public static final String DISCLAIMER_KEY = "sonar.disclaimer.web";
-  public static final String DISCLAIMER_SCANNER_KEY = "sonar.disclaimer.scanner";
-  public static final String DISCLAIMER_HTML_CONTENT = "sonar.disclaimer.html_content";
+
+  public static final String DISCLAIMER_HTML_KEY = "sonar.disclaimer.html.enabled";
+  public static final String DISCLAIMER_HTML_CONTENT_KEY = "sonar.disclaimer.html.content";
+
+  public static final String DISCLAIMER_SCANNER_KEY = "sonar.disclaimer.scanner.enabled";
+  public static final String DISCLAIMER_SCANNER_CONTENT_KEY = "sonar.disclaimer.scanner.content";
 
   private DisclaimerProperties() {
     // only statics
@@ -37,22 +40,28 @@ public class DisclaimerProperties {
 
   public static List<PropertyDefinition> getProperties() {
     return asList(
-      PropertyDefinition.builder(DISCLAIMER_KEY)
-        .name("Web")
-        .description("Display the Web disclaimer (Top menu -> More -> Disclaimer)")
-        .defaultValue(String.valueOf(false))
+      PropertyDefinition.builder(DISCLAIMER_HTML_KEY)
+        .name("HTML enabled")
+        .description("Display the HTML disclaimer (Top menu -> More -> Disclaimer)")
+        .defaultValue(String.valueOf(true))
+        .category(CATEGORY)
+        .build(),
+      PropertyDefinition.builder(DISCLAIMER_HTML_CONTENT_KEY)
+        .name("HTML content")
+        .description("Content of the HTML disclaimer")
+        .defaultValue("<!DOCTYPE html> <html> <head><title>Disclaimer</title></head> <body><p>My disclaimer definition</p></body> </html>")
         .category(CATEGORY)
         .build(),
       PropertyDefinition.builder(DISCLAIMER_SCANNER_KEY)
-        .name("Scanner")
+        .name("Scanner enabled")
         .description("Display the disclaimer in the sonar-scanner execution traces (level: INFO)")
-        .defaultValue(String.valueOf(false))
+        .defaultValue(String.valueOf(true))
         .category(CATEGORY)
         .build(),
-      PropertyDefinition.builder(DISCLAIMER_HTML_CONTENT)
-        .name("Content")
-        .description("HTML")
-        .defaultValue(String.valueOf(false))
+      PropertyDefinition.builder(DISCLAIMER_SCANNER_CONTENT_KEY)
+        .name("Scanner content")
+        .description("Content of disclaimer of the sonar-scanner")
+        .defaultValue("----------------- Airbus - Sonarqube Disclaimer -----------------\n   General Data Protection Regulations / Export Control / Occar  \n             https://confluence.airbus.corp/x/QoypDQ             \n-----------------------------------------------------------------")
         .category(CATEGORY)
         .build());
   }
