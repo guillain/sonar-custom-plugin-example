@@ -21,3 +21,14 @@ let el, stylesTag;
 function init() {
   el.innerHTML = DisclaimerProperties.DISCLAIMER_SCANNER_KEY;
 }
+
+export function start(element) {
+  el = element;
+  init();
+}
+
+export function stop() {
+  // The node will get removed completely by SonarQube anyway, but we can still
+  // clean it up.
+  el.innerHTML = "";
+}
