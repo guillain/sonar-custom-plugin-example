@@ -2,13 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.sonarsource.plugins.example</groupId>
+  <groupId>org.sonarsource.plugins.disclaimer</groupId>
   <artifactId>sonar-disclaimer-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
   <version>8.9.1</version>
 
-  <name>Example Plugin for SonarQube 8.x</name>
-  <description>Example of Plugin for SonarQube: Foo Language, FooLint, Custom Metrics and MeasureComputers</description>
+  <name>Disclaimer Plugin for SonarQube 8.x</name>
+  <description>Disclaimer plugin for SonarQube inteagrted in the web frontend and the sonar-scanner</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -55,8 +55,8 @@
         <version>1.18.0.372</version>
         <extensions>true</extensions>
         <configuration>
-          <pluginKey>example</pluginKey>
-          <pluginClass>org.sonarsource.plugins.example.DisclaimerPlugin</pluginClass>
+          <pluginKey>disclaimer</pluginKey>
+          <pluginClass>org.sonarsource.plugins.disclaimer.DisclaimerPlugin</pluginClass>
         </configuration>
       </plugin>
       <plugin>

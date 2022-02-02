@@ -21,7 +21,7 @@ const config = require('./webpack.config');
 
 config.devtool = 'eval';
 
-config.output.publicPath = '/static/example/';
+config.output.publicPath = '/static/disclaimer/';
 
 config.output.pathinfo = true;
 
