@@ -1,4 +1,4 @@
-SonarQube Custom Plugin Example [![Build Status](https://travis-ci.org/SonarSource/sonar-custom-plugin-example.svg?branch=7.x)](https://travis-ci.org/SonarSource/sonar-custom-plugin-example)
+SonarQube Custom Plugin Example [![Java CI with Maven](https://github.com/guillain/sonar-custom-plugin-example/actions/workflows/maven_8.x.yml/badge.svg)](https://github.com/guillain/sonar-custom-plugin-example/actions/workflows/maven_8.x.yml)
 ==========
 
 An example SonarQube plugin compatible with SonarQube 8.x.
